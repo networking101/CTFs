@@ -4,7 +4,7 @@ Start by running checksec on the binary.
 
 ![checksec](./screenshots/checksec.png)
 
-NX and PIE enabled.  We have source code.  Lets view it.
+We have a 64 bit binary.  NX and PIE enabled.  We have source code.  Lets view it.
 
 #### main.c
 ```C
