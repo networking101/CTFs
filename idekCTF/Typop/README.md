@@ -162,11 +162,11 @@ with open("payload", "ab") as fp:
 p.send(payload)
 ```
 
-Last thing to do is run the exploit.
+Last thing to do is run it.
 
 ![exploit](./screenshots/exploit.png)
 
-Complete!  Here is the final exploit.
+Complete!  Here is the final code.
 
 #### exploit.py
 ```python
