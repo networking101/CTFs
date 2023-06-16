@@ -1,4 +1,4 @@
-## Intro to Pwn1
+## Pwn1
 
 Start by running checksec on the binary.
 
