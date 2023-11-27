@@ -86,7 +86,7 @@ We had an issue getting the address for fgets but we should have enough.
 
 We have 4 results.  After some guessing and checking I figured out they were using libc6_2.35-0ubuntu3_amd64.  We can download it and use it in our pwn script.
 
-Now we need a buffer overflow that will execute a shell.  I decided to call system on the "/bin/sh" string in the libc rodata section.  With that we should have everything we need to finish our exploit.
+Now we need a buffer overflow that will execute a shell.  I decided to call system on the "/bin/sh" string in the libc rodata section.  I also needed one more ret gadget to make sure the stack is 16 byte aligned before calling system.  With that we should have everything we need to finish our exploit.
 
 #### exploit.py
 ```python
